@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Puzzle</title>
+    <title>QR 코드 퍼즐</title>
     <style>
         /* 독도체 폰트 불러오기 */
         @font-face {
@@ -30,7 +30,7 @@
             font-family: 'Dokdo', sans-serif;
             font-size: 1.2em;
         }
-        #puzzleSection, #resultSection {
+        #puzzleSection {
             display: none;
             margin-top: 30px; /* 전체 섹션을 아래로 이동 */
         }
@@ -55,16 +55,18 @@
     <input type="text" id="passwordInput" placeholder="비밀번호 입력">
     <button id="passwordButton" onclick="checkPassword()">확인</button>
 
+    <div id="puzzleSection">
+        <p>이제 조금씩 희미하게 기억이 나고있어...<br>그래! 난 운동을 좋아했지.<br>아 맞다! 난 체육관을 자주 다녔지.<br>체육관에 아이패드 비번을 적어놓았던거 같은데...</p>
+    </div>
+
     <script>
         function checkPassword() {
             const password = document.getElementById("passwordInput").value;
             if (password === "9434") {
-                document.getElementById("puzzleSection").style.display = "block";
-                document.getElementById("passwordInput").style.display = "none";
-                document.getElementById("passwordButton").style.display = "none"; // ID로 버튼 숨기기
-                const passwordMessage = document.getElementById("passwordMessage");
-                passwordMessage.innerHTML = "이제 조금씩 희미하게 기억이 나고있어...<br>그래! 난 운동을 좋아했지.<br>아 맞다! 난 체육관을 자주 다녔지.<br>체육관에 아이패드 비번을 적어놓았던거 같은데...";
-                passwordMessage.style.marginTop = "20px"; // 아래로 내리기
+                document.getElementById("puzzleSection").style.display = "block"; // 퍼즐 섹션 표시
+                document.getElementById("passwordInput").style.display = "none"; // 비밀번호 입력 숨기기
+                document.getElementById("passwordButton").style.display = "none"; // 버튼 숨기기
+                document.getElementById("passwordMessage").style.display = "none"; // 비밀번호 메시지 숨기기
             } else {
                 alert("비밀번호가 틀렸습니다. 다시 시도하세요.");
             }
