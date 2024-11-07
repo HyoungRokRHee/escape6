@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Puzzle</title>
+    <style>
+        /* 독도체 폰트 불러오기 */
+        @font-face {
+            font-family: 'Dokdo';
+            src: url('./fonts/Dokdo-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 전체 배경 이미지 설정 */
+        body {
+            background-image: url('https://github.com/HyoungRokRHee/escape1/raw/main/whole.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            text-align: center;
+            font-family: 'Dokdo', sans-serif;
+            font-size: 1.2em;
+        }
+        #puzzleSection, #resultSection {
+            display: none;
+            margin-top: 30px; /* 전체 섹션을 아래로 이동 */
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        #passwordMessage {
+            font-size: 0.6em; /* 글자 크기 절반으로 줄이기 */
+            margin-top: 20px; /* 아래로 내리기 */
+            line-height: 1.5em; /* 줄 간격 조절 */
+        }
+    </style>
+</head>
+<body>
+
+    <h2 id="passwordMessage">비밀번호를 입력하세요</h2>
+    <input type="text" id="passwordInput" placeholder="비밀번호 입력">
+    <button id="passwordButton" onclick="checkPassword()">확인</button>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById("passwordInput").value;
+            if (password === "9434") {
+                document.getElementById("puzzleSection").style.display = "block";
+                document.getElementById("passwordInput").style.display = "none";
+                document.getElementById("passwordButton").style.display = "none"; // ID로 버튼 숨기기
+                const passwordMessage = document.getElementById("passwordMessage");
+                passwordMessage.innerHTML = "이제 조금씩 희미하게 기억이 나고있어...<br>그래! 난 운동을 좋아했지.<br>아 맞다! 난 체육관을 자주 다녔지.<br>체육관에 아이패드 비번을 적어놓았던거 같은데...";
+                passwordMessage.style.marginTop = "20px"; // 아래로 내리기
+            } else {
+                alert("비밀번호가 틀렸습니다. 다시 시도하세요.");
+            }
+        }
+    </script>
+
+</body>
+</html>
